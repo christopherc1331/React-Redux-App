@@ -1,4 +1,4 @@
-import { FETCH_QUESTION, FETCH_QUESTION_SUCCESS } from "../Actions/Index.js";
+import { FETCH_QUESTION, FETCH_QUESTION_SUCCESS } from "../Actions/";
 
 const initialState = {
   isFetching: false,
@@ -9,7 +9,9 @@ const initialState = {
   value: ""
 };
 
-const Reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
+  console.log("state in reducer:", state);
+  console.log("action in reducer:", action);
   switch (action.type) {
     case FETCH_QUESTION:
       return {
@@ -24,7 +26,7 @@ const Reducer = (state = initialState, action) => {
         id: action.payload.id,
         question: action.payload.question,
         answer: action.payload.answer,
-        category: action.payload.category.title,
+        category: action.payload.category,
         value: action.payload.value
       };
 
@@ -32,5 +34,3 @@ const Reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default Reducer;
